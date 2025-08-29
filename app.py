@@ -1,4 +1,4 @@
-# app.py — MyDoctorHub (Consumer) + Doctor Hub (Hospital) — Single-file Streamlit App
+# app.py — Viatra (Consumer) + Viatra (Hospital) — Single-file Streamlit App
 # ---------------------------------------------------------------------------------
 # Enhanced Home/About: interactive cards, CSS, CTAs, and a simple architecture diagram.
 # Notes:
@@ -16,7 +16,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-APP_TITLE = "MyDoctorHub — Consumer & Hospital Hubs"
+APP_TITLE = "Viatra — Consumer & Hospital Hubs"
 
 # ----------------------------
 # Session State Bootstrapping
@@ -167,7 +167,7 @@ st.set_page_config(page_title=APP_TITLE, layout="wide")
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 with st.container():
-    st.markdown("<div class='app-header'><div><div class='brand'>MyDoctorHub</div><div class='lead'>A smart Personal Health OS + Doctor Cockpit — anticipatory, interoperable, and enterprise-ready.</div></div></div>", unsafe_allow_html=True)
+    st.markdown("<div class='app-header'><div><div class='brand'>Viatra</div><div class='lead'>A smart Personal Health OS + Doctor Cockpit — anticipatory, interoperable, and enterprise-ready.</div></div></div>", unsafe_allow_html=True)
 
 with st.sidebar:
     st.markdown("### Navigation")
@@ -175,8 +175,8 @@ with st.sidebar:
         "Go to",
         [
             "Home / About",
-            "MyDoctorHub (Consumer)",
-            "Doctor Hub (Hospital)",
+            "Viatra (Consumer)",
+            "Viatra (Hospital)",
         ],
     )
 
@@ -185,13 +185,13 @@ with st.sidebar:
 # ----------------------------
 
 if page == "Home / About":
-    st.markdown("<div style='display:flex;gap:18px;align-items:center'><div style='flex:1'><h2>Welcome — MyDoctorHub</h2><div class='small'>The only platform that gives patients a clinician's view while giving doctors a single, integrated cockpit for care.</div></div><div style='text-align:right'><a class='cta' href='#pilot'>Request a Pilot</a></div></div>", unsafe_allow_html=True)
+    st.markdown("<div style='display:flex;gap:18px;align-items:center'><div style='flex:1'><h2>Welcome — Viatra</h2><div class='small'>The only platform that gives patients a clinician's view while giving doctors a single, integrated cockpit for care.</div></div><div style='text-align:right'><a class='cta' href='#pilot'>Request a Pilot</a></div></div>", unsafe_allow_html=True)
 
     st.markdown("<div class='card-grid'>", unsafe_allow_html=True)
 
     # Consumer Card
     render_card(
-        "Consumer Module — MyDoctorHub",
+        "Consumer Module — Viatra",
         "A clinician-inspired Personal Health OS for patients and families.",
         bullets=[
             "Doctor-style timeline of vitals, labs, meds and wearables",
@@ -206,7 +206,7 @@ if page == "Home / About":
 
     # Doctor Card
     render_card(
-        "Hospital Module — Doctor Hub",
+        "Hospital Module — Viatra",
         "A one-stop digital cockpit for physicians; designed to integrate with hospital systems.",
         bullets=[
             "Secure patient registry & bedside notes (blockchain anchor optional)",
@@ -252,7 +252,7 @@ if page == "Home / About":
     #     # Draw a simple architecture diagram using matplotlib
     #     fig, ax = plt.subplots(figsize=(9,3))
     #     ax.axis('off')
-    #     boxes = ["Wearables & Devices","Consumer App","Ingestion (OCR / FHIR)","AI Interpreter / Twin","Time-series DB / Locker","Doctor Hub / EMR" ]
+    #     boxes = ["Wearables & Devices","Consumer App","Ingestion (OCR / FHIR)","AI Interpreter / Twin","Time-series DB / Locker","Viatra / EMR" ]
     #     xs = [0.05,0.28,0.48,0.66,0.84,0.92]
     #     for i, b in enumerate(boxes):
     #         ax.add_patch(plt.Rectangle((xs[i]-0.06,0.35),0.12,0.3,facecolor='#f8fafc',edgecolor='#c7def8'))
@@ -290,21 +290,41 @@ if page == "Home / About":
     st.markdown("---")
     st.subheader("Download — One-page Pitch (PDF/JSON)")
     pitch = {
-        'title': 'MyDoctorHub — One Pager',
-        'value_prop': 'Doctor-eyes for patients + single cockpit for doctors; predictive preventive layer',
-        'asks': ['Pilot partnership', 'Seed investment', 'Hospital integration pilot'],
-        'metrics': {'engagement_target':'30% WAU', 'efficiency_target':'20% admin reduction'}
-    }
+        "title": "Viatra — Personal Health OS + Doctor Cockpit",
+        "value_prop": "A smart, interoperable health platform that empowers patients with 'doctor-eyes' and gives physicians a unified cockpit. Viatra acts as a predictive, preventive, and personalized health layer on top of existing care journeys.",
+        "vision": "We are redefining healthcare from episodic and reactive to continuous, anticipatory, and data-driven.",
+        "differentiation": [
+            "Consumer module (Viatra): family health hub, personal health OS, AI-driven health interpreter",
+            "Doctor module (DoctorHub): streamlined cockpit with predictive triage, patient insights, and reduced admin overhead",
+            "Enterprise-ready: interoperable with EMR/EHR, designed for scalability and compliance"
+        ],
+        "traction": {
+            "MVP_status": "Functional demo with patient vitals, AI interpreter, and family health profiles",
+            "pipeline": "Exploring hospital pilot collaborations and user beta trials"
+        },
+        "asks": [
+            "Pilot partnership with leading hospitals/clinics",
+            "Seed investment to accelerate development and regulatory compliance",
+            "Integration pilots with existing hospital information systems"
+        ],
+        "metrics": {
+            "engagement_target": "30% weekly active users (WAU) within 6 months",
+            "efficiency_target": "20% reduction in physician admin load",
+            "clinical_target": "Improved early detection of high-risk cases by 15%"
+        },
+        "north_star": "To become the anticipatory health OS — the layer where patients, families, and doctors converge seamlessly."
+        }
+
     pitch_payload = json.dumps(pitch, indent=2)
-    st.download_button('Download Pitch (JSON)', data=pitch_payload, file_name='mydoctorhub_pitch.json')
+    st.download_button('Download Pitch (JSON)', data=pitch_payload, file_name='Viatra_pitch.json')
 
     st.markdown("<div class='footer-small'>Questions? Use the sidebar to navigate to the interactive Consumer & Doctor demos. This landing page is a smart, product-led narrative ready for investor and hospital stakeholders.</div>", unsafe_allow_html=True)
 
 # ----------------------------
-# MyDoctorHub (Consumer)
+# Viatra (Consumer)
 # ----------------------------
 
-if page == "MyDoctorHub (Consumer)":
+if page == "Viatra (Consumer)":
     left, right = st.columns([1, 2])
 
     with left:
@@ -387,10 +407,10 @@ if page == "MyDoctorHub (Consumer)":
             st.write(st.session_state.lab_text[:1000])
 
 # ----------------------------
-# Doctor Hub (Hospital)
+# Viatra (Hospital)
 # ----------------------------
 
-if page == "Doctor Hub (Hospital)":
+if page == "Viatra (Hospital)":
     st.markdown("**Operating Model:** Centralized cockpit for patient management, scheduling, e-prescriptions, decision support, collaboration, analytics, and learning — designed to integrate with existing HIS/EMR via FHIR/HL7.")
 
     tabs = st.tabs([
@@ -476,4 +496,4 @@ if page == "Doctor Hub (Hospital)":
 # ----------------------------
 
 st.divider()
-st.caption("© 2025 MyDoctorHub — This MVP is for demonstration only and does not provide medical advice.")
+st.caption("© 2025 Viatra — This MVP is for demonstration only and does not provide medical advice.")
